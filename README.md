@@ -1,6 +1,25 @@
 # Qwen3.6-35B-A3B on 12GB VRAM — Full Context Guide
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows-blue)]()
+[![Model](https://img.shields.io/badge/model-Qwen3.6--35B--A3B-purple)]()
+[![VRAM](https://img.shields.io/badge/VRAM-12GB-green)]()
+[![Context](https://img.shields.io/badge/context-258K-orange)]()
+
 > Run the full **258K native context** of Qwen3.6-35B-A3B (MoE, 3B active) on an **RTX 4070 SUPER 12GB** with llama.cpp — all benchmarked, all tunable, scripts included.
+
+## Profiles at a glance
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│            Qwen3.6-35B-A3B · one model, four profiles              │
+├──────────┬────────────┬────────────┬───────────────────────────────┤
+│ 32K      │ 64K        │ 128K       │ 258K (native max)             │
+│ ncmoe 16 │ ncmoe 17   │ ncmoe 20   │ ncmoe 22 + q4_0 KV            │
+│ 64.0 t/s │ 60.7 t/s   │ 55.3 t/s   │ 50.9 t/s · 45K input in 85s   │
+│ chat     │ default    │ long docs  │ full native context           │
+└──────────┴────────────┴────────────┴───────────────────────────────┘
+```
 
 ## TL;DR — What we found (measured, not guessed)
 
@@ -118,6 +137,10 @@ Qwen3.6-35B-12GB-VRAM-Guide/
 ├── benchmarks/       # raw speed tables
 └── docs/             # cliff rule, prefill collapse, troubleshooting
 ```
+
+## Related Projects
+
+- [MiniMax-H3-12GB-ComfyUI-Guide](https://github.com/shiqikuangsan31/MiniMax-H3-12GB-ComfyUI-Guide) — H3 video generation (T2V/I2V + synced audio, MotionContext) on the same 12GB rig. Together: **text/agent inference + video generation, both on 12GB VRAM**.
 
 ## License
 
