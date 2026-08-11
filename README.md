@@ -32,6 +32,16 @@
 
 **Bottom line**: with the right `--n-cpu-moe` + `--cache-type` combo, a 12GB card runs the entire 262K-token native context at ~51 tok/s. Most guides stop at 32K/64K — they are leaving 4× context on the table.
 
+## Demo
+
+Real benchmark on the 258K profile (this machine, 2026-08-11) — mean **48.9 tok/s**, randomized prompts (no cache hits):
+
+![Benchmark on 258K profile](assets/benchmark-258k.png)
+
+The four profiles side by side — same model, only ncmoe/KV tuned:
+
+![Profile comparison](assets/profiles-compare.png)
+
 ## Hardware / Stack
 
 - GPU: NVIDIA RTX 4070 SUPER **12 GB** (192-bit, ~504 GB/s) — works on any 12GB+ card: 3060, 4060 Ti, 4070
