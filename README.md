@@ -46,6 +46,39 @@ Full tuning history (every measurement, all failed variants): [benchmarks/tuning
 
 ## Quick Start
 
+### 0. Get the model (HF: SC117/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF)
+
+| file | size | note |
+|---|---|---|
+| `Qwen3.6-35B-A3B-...-APEX-I-Compact.gguf` | 17.0 GB | **this guide's model** (q8-ish, fits 12GB with ncmoe offload) |
+| `Qwen3.6-35B-A3B-...-APEX-I-MINI.gguf` | 14.3 GB | lighter option, more VRAM headroom |
+| `Qwen3.6-35B-A3B-...-APEX-I-Balanced.gguf` | 26.0 GB | needs >12GB or heavy offload |
+| `mmproj-Qwen3.6-35B-A3B-...-APEX-F16.gguf` | 0.9 GB | vision (optional) |
+
+```bash
+# with huggingface_hub
+hf download SC117/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF \
+  Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-I-Compact.gguf --local-dir models/
+# or China mirror
+hf download --endpoint https://hf-mirror.com SC117/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF \
+  Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-I-Compact.gguf --local-dir models/
+```
+
+> The official **Qwen/Qwen3.6-35B-A3B** (Apache-2.0) also works — same tuning applies. The APEX/uncensored variant is what we benchmarked.
+
+### 1. Get llama.cpp server
+
+```bash
+# official build (any recent version ≥ b5xxx works; flash-attn optional but not required)
+git clone https://github.com/ggml-org/llama.cpp
+cmake -B build -DGGML_CUDA=ON && cmake --build build --config Release
+# → build/bin/Release/llama-server.exe
+```
+
+We used a Windows-native CUDA build (ik_llama.cpp b5095 fork). Native Windows beats WSL 2-3× under VRAM pressure — don't run this in WSL.
+
+### 2. Start a profile
+
 Pick a profile and run (PowerShell, idempotent — starts the server if not running):
 
 ```powershell
@@ -76,6 +109,22 @@ llama-server.exe \
   --jinja --threads 12 \
   --host 127.0.0.1 --port 8080
 ```
+
+## Verify It Works
+
+```bash
+# 1. health check (should print {"status":"ok",...})
+curl http://127.0.0.1:8080/health
+
+# 2. quick chat test
+curl http://127.0.0.1:8080/v1/chat/completions -H "Content-Type: application/json" \
+  -d '{"model":"local","messages":[{"role":"user","content":"Say hi in one line"}],"max_tokens":50}'
+
+# 3. speed benchmark (3 runs, prints tok/s; same-session comparison only)
+python scripts/benchmark.py
+```
+
+Expected: `n_ctx` matches the profile (65536 / 131072 / 262144), decode ≈ 50-64 tok/s depending on profile.
 
 ## Benchmark Tables
 
