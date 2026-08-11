@@ -42,6 +42,10 @@ The four profiles side by side — same model, only ncmoe/KV tuned:
 
 ![Profile comparison](assets/profiles-compare.png)
 
+Full parameter space — decode tok/s by `--n-cpu-moe` × context (green = fast, red = cliff; black boxes = sweet spot path 16→17→20→22):
+
+![ncmoe × ctx heatmap](assets/ncmoe-ctx-heatmap.png)
+
 ## Hardware / Stack
 
 - GPU: NVIDIA RTX 4070 SUPER **12 GB** (192-bit, ~504 GB/s) — works on any 12GB+ card: 3060, 4060 Ti, 4070
@@ -199,7 +203,10 @@ Qwen3.6-35B-12GB-VRAM-Guide/
 
 ## Related Projects
 
-- [MiniMax-H3-12GB-ComfyUI-Guide](https://github.com/shiqikuangsan31/MiniMax-H3-12GB-ComfyUI-Guide) — H3 video generation (T2V/I2V + synced audio, MotionContext) on the same 12GB rig. Together: **text/agent inference + video generation, both on 12GB VRAM**.
+- [MiniMax-H3-12GB-ComfyUI-Guide](https://github.com/shiqikuangsan31/MiniMax-H3-12GB-ComfyUI-Guide) — H3 video generation (T2V/I2V + synced audio, MotionContext) on the same 12GB rig.
+- [Qwen-ComfyUI-12GB-Coexist](https://github.com/shiqikuangsan31/Qwen-ComfyUI-12GB-Coexist) — run this LLM AND ComfyUI image gen **simultaneously** on 12GB (36-37 tok/s during renders).
+
+Together: **text/agent inference + image gen + video gen, all on one 12GB card**.
 
 ## License
 
