@@ -15,12 +15,15 @@
 
 ## Hardware / Stack
 
-- GPU: RTX 4070 SUPER **12 GB** (works on any 12GB+ card: 3060, 4060 Ti, 4070)
+- GPU: NVIDIA RTX 4070 SUPER **12 GB** (192-bit, ~504 GB/s) — works on any 12GB+ card: 3060, 4060 Ti, 4070
+- CPU: Intel i5-14600KF (6P+8E, 20 threads)
 - RAM: 32 GB DDR4
-- CPU: i5-14600KF (6P+8E)
-- Backend: llama.cpp server (Windows native CUDA build) — `llama-server.exe`
-- Model: `Qwen3.6-35B-A3B` APEX / abliterated GGUF (~16 GB, q8-ish weights)
-- OS: Windows 10/11 (PowerShell scripts provided)
+- Backend: llama.cpp server (Windows-native CUDA build, **ik_llama.cpp b5095** — native Windows is 2-3× faster than WSL under VRAM pressure)
+- Model: `Qwen3.6-35B-A3B` APEX/abliterated GGUF (~16 GB) + mmproj 902 MB
+- OS: Windows 10/11
+
+Full hardware/environment details + per-profile memory footprint: [benchmarks/hardware-env.md](benchmarks/hardware-env.md)
+Full tuning history (every measurement, all failed variants): [benchmarks/tuning-history.md](benchmarks/tuning-history.md)
 
 ## Quick Start
 
